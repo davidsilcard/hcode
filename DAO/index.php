@@ -20,5 +20,5 @@
 
     $usuario = new Usuario();
     $usuario->loadById(5);
-    $usuario->update("Pretinha","???????");
+    $usuario->delete();
     echo $usuario;
