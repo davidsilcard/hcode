@@ -88,11 +88,11 @@
         }
 
         public function loadById($id)
-        {  
+        {
             $sql = new Sql();
             $results = $sql->select("SELECT * FROM tb_usuarios WHERE idusuario = :ID", array(
                 ":ID"=>$id
-            ));            
+            ));
 
             if (count($results)>0) {
                 $row = $results[0];
@@ -103,10 +103,10 @@
             }
         }
 
-        public function __toString(){
-
+        public function __toString()
+        {
             $data = $this->getDtcadastro();
-            if(isset($data)===true){
+            if (isset($data)===true) {
                 $data = $this->getDtcadastro()->format("d/m/Y H:i:s");
             };
 
@@ -116,5 +116,38 @@
                 "dessenha"=>$this->getDessenha(),
                 "dtcadastro"=>$data
             ));
+        }
+
+        public static function getList()
+        {
+            $sql = new Sql();
+            return $sql->select("SELECT * FROM tb_usuarios");
+        }
+
+        public static function searchLogin($login)
+        {
+            $sql = new Sql();
+            return $sql->select("SELECT * FROM tb_usuarios where deslogin like :SEARCH order by deslogin", array(
+                ":SEARCH"=>"%$login%"
+            ));
+        }
+
+        public function login($login, $password)
+        {
+            $sql = new Sql();
+            $results = $sql->select("SELECT * FROM tb_usuarios WHERE deslogin = :LOGIN and dessenha = :PASSWORD", array(
+                ":LOGIN"=>$login,
+                ":PASSWORD"=>$password
+            ));
+
+            if (count($results)>0) {
+                $row = $results[0];
+                $this->setIdusuario($row['idusuario']);
+                $this->setDeslogin($row['deslogin']);
+                $this->setDessenha($row['dessenha']);
+                $this->setDtcadastro(new DateTime($row['dtcadastro']));
+            } else {
+                throw new Exception("Login e/ou Senha incorretos.", 1);
+            }
         }
     }
