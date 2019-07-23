@@ -1,7 +1,7 @@
 <?php
 
     require_once("config.php");
-    $usuario = new Usuario();
+    // $usuario = new Usuario();
     // $usuario->loadById(3);
     // echo $usuario;
 
@@ -11,5 +11,14 @@
     // $search = Usuario::searchLogin("da");
     // echo json_encode($search); 
 
-    $usuario->login("David","852963");
+    // $usuario->login("David","852963");
+    // echo $usuario;
+
+    // $usuario = new Usuario("Gatinha", "6y7u8i");
+    // $usuario->insert();
+    // echo $usuario;
+
+    $usuario = new Usuario();
+    $usuario->loadById(5);
+    $usuario->update("Pretinha","???????");
     echo $usuario;
