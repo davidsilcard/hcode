@@ -1,4 +1,6 @@
-Idusuario;Deslogin;Dessenha;Dtcadastro
-2;Jose;123456;2019-07-19 15:25:58
-3;David;852963;2019-07-23 10:06:21
-4;Katia;1q2w3e;2019-07-23 14:50:37
+Idusuario,Deslogin,Dessenha,Dtcadastro
+6,aluno,@luno,2017-02-25 14:35:41
+5,joao,123654,2017-02-25 14:11:50
+4,jose,1234567890,2017-02-25 09:09:30
+8,professor,!@#$%¨&*,2017-02-25 14:37:46
+3,root,!@#$,2017-02-17 18:49:43
